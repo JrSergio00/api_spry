@@ -7,7 +7,6 @@ export default async function handler(
 ) {
   try {
     const result = await sql`SELECT * FROM viagem ;`;
-
     return response.status(200).json( result.rows );
   } catch (error) {
     return response.status(500).json({ error });
