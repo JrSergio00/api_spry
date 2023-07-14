@@ -38,6 +38,20 @@ export default function handler(request: NextApiRequest, response: NextApiRespon
       "distancia": "7km",
       "id_usuario": 2,
       "id_prestador": 2
+    },
+    {
+      "partida": "Avenida Abel Cabral",
+      "destino": "Via Diesel",
+      "valor": 175.00,
+      "tp_veiculo": "M",
+      "tp_pagamento": "E",
+      "status": "C",
+      "id": 3,
+      "dt_inicio": "2023-07-12T00:00:00.000Z",
+      "dt_fim": "2023-07-08T00:00:00.000Z",
+      "distancia": "12.4km",
+      "id_usuario": 2,
+      "id_prestador": 2
     }
   ]
 
