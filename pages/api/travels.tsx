@@ -27,20 +27,6 @@ export default function handler(request: NextApiRequest, response: NextApiRespon
     },
     {
       "partida": "Avenida Abel Cabral",
-      "destino": "Natal Shopping",
-      "valor": 19.12,
-      "tp_veiculo": "P",
-      "tp_pagamento": "E",
-      "status": "C",
-      "id": 2,
-      "dt_inicio": "2023-07-12T00:00:00.000Z",
-      "dt_fim": "2023-07-12T00:00:00.000Z",
-      "distancia": "7km",
-      "id_usuario": 2,
-      "id_prestador": 2
-    },
-    {
-      "partida": "Avenida Abel Cabral",
       "destino": "Via Diesel",
       "valor": 175.00,
       "tp_veiculo": "M",
@@ -50,6 +36,34 @@ export default function handler(request: NextApiRequest, response: NextApiRespon
       "dt_inicio": "2023-07-12T00:00:00.000Z",
       "dt_fim": "2023-07-08T00:00:00.000Z",
       "distancia": "12.4km",
+      "id_usuario": 2,
+      "id_prestador": 2
+    },
+    {
+      "partida": "Avenida Hermes da Fonseca",
+      "destino": "Oficina do Dudu",
+      "valor": 250.00,
+      "tp_veiculo": "M",
+      "tp_pagamento": "E",
+      "status": "C",
+      "id": 4,
+      "dt_inicio": "2023-07-12T00:00:00.000Z",
+      "dt_fim": "2023-07-08T00:00:00.000Z",
+      "distancia": "20.4km",
+      "id_usuario": 2,
+      "id_prestador": 2
+    },
+    {
+      "partida": "Avenida Hermes da Fonseca",
+      "destino": "National Veiculos",
+      "valor": 143.00,
+      "tp_veiculo": "M",
+      "tp_pagamento": "E",
+      "status": "C",
+      "id": 5,
+      "dt_inicio": "2023-07-12T00:00:00.000Z",
+      "dt_fim": "2023-07-08T00:00:00.000Z",
+      "distancia": "10.4km",
       "id_usuario": 2,
       "id_prestador": 2
     }

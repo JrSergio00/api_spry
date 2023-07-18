@@ -10,11 +10,15 @@ export default async function handler(
     const usuarios = result.rows;
     
     usuarios.map( (item) => { 
-      const nomeDoUsuário = item.nome;
+      const nomeDoUsuário = item.nome.toLowerCase();
       const nome = nomeDoUsuário.split(' ')[0];
-      const sobrenome = nomeDoUsuário.split(' ')[1];
-      item.nome = nome;
-      item.sobrenome = sobrenome;
+      if(nomeDoUsuário.split(' ')[1] === "da" || nomeDoUsuário.split(' ')[1] === "de" || nomeDoUsuário.split(' ')[1] === "do"){
+        const sobrenome = nomeDoUsuário.split(' ')[1] + nomeDoUsuário.split(' ')[2];
+      } else{
+        const sobrenome = nomeDoUsuário.split(' ')[1];
+        item.nome = nome;
+        item.sobrenome = sobrenome;
+      }
     })
 
     return response.status(200).json( usuarios );
