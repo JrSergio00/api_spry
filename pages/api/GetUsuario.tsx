@@ -21,8 +21,13 @@ export default async function handler(
     usuario.map( (item) => { 
       const nomeDoUsuário = item.nome.toLowerCase();
       const nome = nomeDoUsuário.split(' ')[0];
-      if(nomeDoUsuário.split(' ')[1] === "da" || nomeDoUsuário.split(' ')[1] === "de" || nomeDoUsuário.split(' ')[1] === "do"){
-        const sobrenome = nomeDoUsuário.split(' ')[1] + nomeDoUsuário.split(' ')[2];
+
+      if(nomeDoUsuário.split(' ')[1] === "da" || nomeDoUsuário.split(' ')[1] === "de" || nomeDoUsuário.split(' ')[1] === "do"|| nomeDoUsuário.split(' ')[1] === "dos"|| nomeDoUsuário.split(' ')[1] === "das"){
+      
+        const sobrenome = nomeDoUsuário.split(' ')[1] + " " + nomeDoUsuário.split(' ')[2];
+        item.nome = nome;
+        item.sobrenome = sobrenome;
+      
       } else{
         const sobrenome = nomeDoUsuário.split(' ')[1];
         item.nome = nome;
