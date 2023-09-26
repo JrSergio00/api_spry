@@ -8,14 +8,13 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
-const corsMiddleware = cors(corsOptions);
+// const corsMiddleware = cors(corsOptions);
 
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse,
 ) {
-  // Aplicar o middleware de CORS diretamente aqui
-  corsMiddleware(request, response, async () => {
+  await cors(corsOptions)(request, response, async () => {
     try {
       const { number } = request.body;
 
