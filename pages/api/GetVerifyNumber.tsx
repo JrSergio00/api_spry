@@ -3,19 +3,21 @@ import { sql } from '@vercel/postgres';
 import cors from 'cors';
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Defina a origem permitida específica
-  methods: ['POST'], // Métodos permitidos
-  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+  origin: 'http://localhost:5173',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
+const corsMiddleware = cors(corsOptions);
 
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse,
 ) {
-  await cors(corsOptions)(request, response, async () => {
+  // Aplicar o middleware de CORS diretamente aqui
+  corsMiddleware(request, response, async () => {
     try {
       const { number } = request.body;
-      // const { id }: any = request.query;
 
       const result = await sql`
         SELECT 
