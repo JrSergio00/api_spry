@@ -23,27 +23,32 @@ export default async function handler(
     });
 
     try {
-        const { name, password }: any = request.body;
-        console.log('Nome:', name); // Adicione logs para depuração
-        console.log('Senha:', password); // Adicione logs para depuração
-    
-        const result = await sql`
-            SELECT 
-                id
-            FROM 
-                usuario
-            WHERE
-                nome = ${name}
-                AND senha = ${password}
-        ;`;
+        const { nome, sobrenome, contato, senha }: any = request.body
+        const nomeSemEspacos = nome.trim().toLowerCase()
 
-        console.log('Resultado da consulta:', result.rows); // Adicione logs para depuração
-    
+        const result = await sql`
+            INSERT INTO 
+                usuario 
+                (
+                    id,
+                    nome, 
+                    contato,
+                    senha
+                ) 
+            VALUES 
+                (
+                    (SELECT MAX(id) + 1 FROM usuario),
+                    ${nomeSemEspacos}, 
+                    ${contato},
+                    ${senha}
+                )
+            ;`
+
         // Se houver pelo menos um resultado, retorna true, senão, retorna false
         return response.status(200).json(result.rows.length > 0);
     } catch (error) {
         console.error(error);
         return response.status(500).json({ error: 'Erro interno do servidor' });
     }
-    
+
 }
