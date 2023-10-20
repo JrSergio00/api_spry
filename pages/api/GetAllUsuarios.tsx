@@ -7,6 +7,7 @@ export default async function handler(
 ) {
   try {
     const result = await sql`SELECT * FROM usuario ;`;
+    
     const usuarios = result.rows;
     
     usuarios.map( (item) => { 

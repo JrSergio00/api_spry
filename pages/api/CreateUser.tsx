@@ -23,8 +23,8 @@ export default async function handler(
     });
 
     try {
-        const { nome, sobrenome, contato, senha }: any = request.body
-        const nomeSemEspacos = nome.trim().toLowerCase()
+        const { name, number, password }: any = request.body
+        const nomeSemEspacos = name.trim().toLowerCase()
 
         const result = await sql`
             INSERT INTO 
@@ -39,13 +39,13 @@ export default async function handler(
                 (
                     (SELECT MAX(id) + 1 FROM usuario),
                     ${nomeSemEspacos}, 
-                    ${contato},
-                    ${senha}
+                    ${number},
+                    ${password}
                 )
             ;`
 
         // Se houver pelo menos um resultado, retorna true, senão, retorna false
-        return response.status(200).json(result.rows.length > 0);
+        return response.status(200).json({result: true});
     } catch (error) {
         console.error(error);
         return response.status(500).json({ error: 'Erro interno do servidor' });
