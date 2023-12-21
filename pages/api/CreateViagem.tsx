@@ -23,7 +23,7 @@ export default async function handler(
     });
 
     try {
-        const { partida, destino, valor, tp_veiculo, tp_pagamento, dt_inicio, distancia, id_usuario }: any = request.body
+        const { partida, destino, valor, tp_veiculo, tp_pagamento, dt_inicio, distancia, id_usuario, dt_fim, prestador }: any = request.body
 
         const result = await sql`
             INSERT INTO 
@@ -37,7 +37,10 @@ export default async function handler(
                     tp_pagamento,
                     dt_inicio,
                     distancia,
-                    id_usuario
+                    id_usuario,
+                    status,
+                    dt_fim,
+                    id_prestador
                 ) 
             VALUES 
                 (
@@ -49,11 +52,15 @@ export default async function handler(
                     ${tp_pagamento},
                     ${dt_inicio},
                     ${distancia}, 
-                    ${id_usuario}
+                    ${id_usuario},
+                    'I',
+                    ${dt_fim},
+                    ${prestador}
                 )
             ;`
 
         // Se houver pelo menos um resultado, retorna true, senão, retorna false
+        console.log(result)
         return response.status(200).json({ result: true });
     } catch (error) {
         console.error(error);
